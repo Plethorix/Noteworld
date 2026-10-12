@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -7,8 +7,18 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// Adaptador para desplegar en cualquier plataforma soportada
-		adapter: adapter(),
+		// Adaptador estático para GitHub Pages (SPA sin servidor)
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html',
+			precompress: false,
+			strict: false
+		}),
+
+		paths: {
+			base: process.argv.includes('dev') ? '' : '/Noteworld'
+		},
 
 		alias: {
 			$components: 'src/lib/components',
