@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tema oscuro minimalista por defecto */
+:root {
+	color-scheme: dark;
+}
+
+html,
+body {
+	@apply h-full bg-base-950 text-gray-200 antialiased;
+	font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background: theme('colors.base.700');
+	border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
